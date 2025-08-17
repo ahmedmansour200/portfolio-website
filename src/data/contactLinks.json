@@ -1,7 +1,7 @@
 [
-  { "platform": "GitHub", "url": "https://github.com/ahmedmansour200", "icon": "../src/icons/github.svg" },
-  { "platform": "Email", "url": "mailto:ahmedmansourmohamed99@gmail.com", "icon": "../src/icons/email.svg" },
-  { "platform": "LinkedIn", "url": "https://www.linkedin.com/in/ahmed-mansour-6517b4229?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", "icon": "../src/icons/linkedin.svg" },
-  { "platform": "X", "url": "https://x.com/ahmedmansour736", "icon": "../src/icons/x.svg" },
-  { "platform": "Phone", "url": "tel:+201008752736", "icon": "../src/icons/phone.svg" }
+  { "platform": "GitHub", "url": "https://github.com/ahmedmansour200" },
+  { "platform": "Email", "url": "mailto:ahmedmansourmohamed99@gmail.com" },
+  { "platform": "LinkedIn", "url": "https://www.linkedin.com/in/ahmed-mansour-6517b4229?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
+  { "platform": "X", "url": "https://x.com/ahmedmansour736" },
+  { "platform": "Phone", "url": "tel:+201008752736" }
 ]
