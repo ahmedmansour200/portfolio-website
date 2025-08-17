@@ -52,6 +52,6 @@ This project is open source and available under the MIT License.
 
 ## 🔗 Links
 
-- Live Site: [Your Portfolio URL]
-- GitHub Repository: [Your Repo URL]
+- Live Site: https://a-mansour-portfolio.netlify.app/
+- GitHub Repository: https://github.com/ahmedmansour200/portfolio-website
 
