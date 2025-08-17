@@ -1,0 +1,56 @@
+---
+import Section from "../components/Section.astro";
+import Layout from "../layouts/Layout.astro";
+import contactLinks from "../data/contactLinks.json";
+const title = "Contact";
+const email = "me@jamesqquick.com";
+const contactInformation = [
+  { type: "Email", value: email },
+  { type: "Phone", value: "(123) 456-7890" },
+  { type: "Location", value: "San Francisco, CA" },
+];
+---
+
+<Layout title="Contact">
+    <Section>
+      <h1>{title}</h1>  
+      <div class="social-container">
+
+       { contactLinks.map(item => (
+        <a href={item.url} class="social-link" target="_blank">
+          <img src={item.icon} alt={item.platform}  width="24" height="24"/>
+          {item.platform}
+        </a>
+        ))}
+      </div>
+  </Section>
+</Layout>
+   <style>
+      .social-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+      .social-link {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.125rem;
+        transition: color 0.3s;
+      }
+
+      .social-link:hover {
+        color: #3b82f6;
+      }
+
+      @media (min-width: 768px) {
+        .social-container {
+      flex-direction: row;
+      gap: 2rem;
+        }
+      }
+    </style>
