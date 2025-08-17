@@ -4,12 +4,16 @@
         "CSS3",
         "JavaScript",
         "React.js",
-        "Bootstrap",
         "Responsive Design",
         "TypeScript",
         "SASS/SCSS",
         "Redux",
-        "Webpack"
+        "Webpack",
+        "Tailwind CSS",
+        "Next.js",
+        "Astro",
+        "Vite",
+        "Bootstrap"
     ],
     "Back-end": ["Node.js", "Express.js", "MongoDB", "SQL", "REST API", "GraphQL", "Firebase", "Authentication"],
     "Design": ["UI/UX", "Figma", "Adobe XD", "Responsive Design"]

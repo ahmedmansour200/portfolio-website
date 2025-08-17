@@ -4,8 +4,8 @@
     "slug": "project-1",
     "description": "A personal portfolio website showcasing my projects, skills, and blog posts. Built with Astro, TailwindCSS, and React.",
     "image": "/images/projects/project-1.png",
-    "githubURL": "https://github.com/jamesqquick",
-    "liveSiteURL": "https://jamesqquick.com"
+    "githubURL": "https://github.com/ahmedmansour200/portfolio-website",
+    "liveSiteURL": "https://a-mansour-portfolio.netlify.app/"
   },
   {
     "title": "Todo App",

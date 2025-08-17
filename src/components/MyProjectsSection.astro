@@ -7,7 +7,7 @@ const projects = await getCollection('project');
 
 const heading = "My Projects";
 const cta = { text: 'View All', href: '/projects' };
-  ---
+---
 <Section dark={true}>
   <SectionHeader cta={cta} heading={heading}/>
 
@@ -15,8 +15,8 @@ const cta = { text: 'View All', href: '/projects' };
     {
       projects.map(project => (
         <div class="card">
-          <img height="200" src={project.data.image} alt={project.data.title}/>
-          <h3><a href={project.data.liveSiteURL}>{project.data.title}</a></h3>
+          <a href={`/projects/${project.data.slug}`}><img  src={project.data.image} alt={project.data.title}/></a>
+          <h3><a href={`/projects/${project.data.slug}`}>{project.data.title}</a></h3>
         </div>
       ))
     }
@@ -30,6 +30,12 @@ const cta = { text: 'View All', href: '/projects' };
     grid-template-columns: 1fr 1fr 1fr;
     gap: 24px;
     
+  }
+  
+  img{
+    height: 192px;
+    width: 100%;
+  }
     .card {
       overflow: hidden;
       transition: transform 0.3s;
@@ -49,12 +55,10 @@ const cta = { text: 'View All', href: '/projects' };
       }
       
       @media (max-width: 700px) {
-        & {
+        .projects-container {
           grid-template-columns: 1fr;
         }
-        
-      
-    }
-  }
+
+      }
 
 </style>
