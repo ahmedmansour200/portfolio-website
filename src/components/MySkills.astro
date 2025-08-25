@@ -24,6 +24,7 @@ const heading = "My Skills"
 <style>
 .skills-container {
 	display: flex;
+	flex-direction: column;
 	gap: 1.5rem;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -38,16 +39,16 @@ h2 {
     }
 .skill-category {
 	background: var(--surface, #ffffff);
-	border-radius: 12px;
+	border-radius: 8px;
 	box-shadow: 0 6px 18px rgba(2,6,23,0.06);
 	padding: 1rem 1.25rem;
 	min-width: 220px;
-	flex: 1 1 220px;
+	flex: 1;
 	transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .skill-category:hover { transform: translateY(-6px); box-shadow: 0 10px 30px rgba(2,6,23,0.09); }
 .skill-category h3 { margin: 0 0 0.75rem 0; text-align: center; color: var(--accent, #0b7285); }
-.skill-category ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.45rem; }
+.skill-category ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.45rem; }
 .skill-item {
 	display: inline-block;
 	padding: 0.45rem 0.75rem;

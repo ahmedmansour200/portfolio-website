@@ -1,5 +1,6 @@
 ---
 import { getCollection, render} from "astro:content";
+import type { CollectionEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Section from "../../components/Section.astro";
 
@@ -29,6 +30,10 @@ const { Content } = await render(post);
     </div>
   </Section>
 </Layout>
+<head>
+  <title>{post.data.title}</title>
+  <meta name="description" content={post.data.description} />
+</head>
 
 <style>
   .post {
