@@ -1,0 +1,141 @@
+---
+interface Props {
+    item: {
+
+        role: string;
+
+        company: string;
+
+        location?: string;
+
+        start?: string;
+
+        end?: string;
+
+        description?: string;
+
+        bullets?: string[];
+
+        link?: string;
+
+    };
+
+    i?: number;
+}
+
+const { item, i } = Astro.props;
+
+---
+<div class="exp-card p-6 rounded-lg shadow-md bg-white border border-gray-200" data-index={i} role="listitem" tabindex="0" aria-label={`${item.role} at ${item.company}`}>
+    <div class="flex justify-between items-center">
+        <div class="role">{item.role}</div>
+        <div class="company">
+            {item.company}
+            {item.location ? <span class="location"> {item.location}</span> : null}
+        </div>
+    </div>
+
+    <div class="exp-meta">{item.start} — {item.end}</div>
+
+    <p class="exp-desc">{item.description}</p>
+
+    {item.bullets && (
+        <ul class="exp-bullets">
+            {item.bullets.map((b) => (<li>{b}</li>))}
+        </ul>
+    )}
+
+    {item.link && (
+        <a class="" href={item.link} target="_blank" rel="noopener noreferrer">
+            Learn more
+        </a>
+    )}
+</div>
+
+
+
+<style>
+/* Base card styles (keeps Tailwind utility classes but ensures consistent look if Tailwind isn't applied) */
+.exp-card {
+    background: var(--white, #fff);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 8px 24px rgba(2,6,23,0.06);
+    transition: transform 220ms ease, box-shadow 220ms ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.exp-card:focus {
+    outline: 3px solid rgba(64,46,255,0.12);
+    outline-offset: 4px;
+}
+
+.exp-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(2,6,23,0.12);
+}
+
+.exp-card .role {
+    font-weight: 700;
+    color: var(--dark, #21243d);
+    font-size: 1.05rem;
+}
+
+.exp-card .company {
+    color: var(--primary, #402eff);
+    font-weight: 700;
+    text-align: right;
+}
+
+.exp-card .location {
+    color: #6b7280;
+    font-weight: 500;
+    margin-left: 6px;
+}
+
+.exp-card .exp-meta {
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+.exp-card .exp-desc {
+    color: #334155;
+    line-height: 1.5;
+    margin-top: 0.25rem;
+}
+
+.exp-card ul {
+    margin: 0.5rem 0 0 1rem;
+    padding: 0;
+    color: #334155;
+}
+
+.exp-card a {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: var(--primary, #402eff);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* entrance animation: start hidden and slide up + fade in when .in is added */
+.exp-card.animate:not(.in) {
+    transform: translateY(18px);
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: transform 420ms cubic-bezier(.2,.9,.2,1), opacity 420ms ease;
+}
+.exp-card.animate.in {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+@media (max-width: 780px) {
+    .exp-card { padding: 1rem; }
+    .exp-card .company { text-align: left; }
+}
+
+</style>

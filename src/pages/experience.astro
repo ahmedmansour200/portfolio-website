@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+import experience from '../data/experience.json';
+import ExperienceItem from '../components/ExperienceItem.astro';
+
+const heading = 'Experience';
+---
+
+<Layout title={heading}>
+  <Section>
+  <h1>{heading}</h1>
+  <div class="experience-list">
+   {experience.map((item, i) => (
+    <ExperienceItem item={item} i={i} />
+  ))}
+  </div>
+  </Section>
+</Layout>
+
+<head>
+  <title>{heading}</title>
+  <meta name="description" content="My professional experience, roles and achievements." />
+</head>
+
+<script>
+  // Staggered reveal for all experience lists on the page
+  (function () {
+    if (typeof window === 'undefined') return;
+    const containers = Array.from(document.querySelectorAll('.experience-list, #experience'));
+    if (!containers.length) return;
+
+  // find all exp-card elements inside these containers
+  const items = containers.flatMap(c => Array.from(c.querySelectorAll('.exp-card')));
+  if (!items.length) return;
+
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const idx = Number(el.getAttribute('data-index') || 0);
+          // add animate then in so CSS shows content if JS isn't running
+          el.classList.add('animate');
+          setTimeout(() => el.classList.add('in'), idx * 120);
+          obs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    items.forEach(i => obs.observe(i));
+  })();
+</script>
+
+<style>
+  .experience-list {
+    display: grid;
+    gap: 20px;
+  }
+
+  @media (max-width: 780px) {
+    .experience-list { grid-template-columns: 1fr; }
+  } 
+</style>

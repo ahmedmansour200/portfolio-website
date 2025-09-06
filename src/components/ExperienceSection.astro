@@ -1,0 +1,32 @@
+---
+import Section from "./Section.astro";
+import SectionHeader from "./SectionHeader.astro";
+import experience from "../data/experience.json";
+import ExperienceItem from "./ExperienceItem.astro";
+
+const heading = "Experience";
+const cta = { text: 'View All', href: '/experience' };
+---
+
+<Section>
+  <SectionHeader cta={cta} heading={heading} />
+
+  <div class="experience-list">
+    {experience.slice(0, 2).map((item, i) => (
+      <ExperienceItem item={item} i={i} />
+    ))}
+  </div>
+</Section>
+
+<style>
+  .experience-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  @media (max-width: 780px) {
+    .experience-list { grid-template-columns: 1fr; }
+  }
+</style>
+

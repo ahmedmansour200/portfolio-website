@@ -4,12 +4,20 @@ import Container from "./Container.astro";
 
 <nav class="nav">
   <Container>
-    <div class="nav-container">
-      <div>
-        <a href="/"><img src="/logo_po.png" alt="logo"/></a>
+    <div class="nav-container" id="nav">
+      <div class="brand">
+        <a href="/"><img src="/logo_po.png" alt="logo" /></a>
       </div>
-      <ul class="nav-items">
+
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <ul class="nav-items" id="navItems">
         <li><a href="/projects" class="nav-link">Projects</a></li>
+        <li><a href="/experience" class="nav-link">Experience</a></li>
         <li><a href="/blog" class="nav-link">Blog</a></li>
         <li><a href="#footer" class="nav-link">Contact</a></li>
       </ul>
@@ -18,49 +26,155 @@ import Container from "./Container.astro";
 </nav>
 
 <style>
-  nav {
-    background: var(--secondary);
+  :root {
+    --nav-padding: 24px;
+  }
 
-    img {
-      height: 32px;
+  .nav {
+    background: var(--secondary);
+  }
+
+  .nav img {
+    height: 32px;
+    display: block;
+  }
+
+  .nav-container {
+    display: flex;
+    padding: var(--nav-padding) 0;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /* for absolute mobile menu */
+  }
+
+  .nav-items {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  }
+
+  .nav-items a {
+    text-decoration: none;
+    color: var(--dark);
+    font-size: 18px;
+  }
+
+  .nav-link {
+    font-weight: 500;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    padding: 8px 16px;
+    border-radius: 4px;
+  }
+
+  .nav-link:hover {
+    color: #476686;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  /* hamburger button (hidden on desktop) */
+  .nav-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+  }
+
+  .nav-toggle:focus {
+    outline: 2px solid rgba(71,102,134,0.25);
+  }
+
+  .nav-toggle .bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--dark);
+    margin: 4px 0;
+    transition: transform 0.3s ease, opacity 0.2s ease;
+  }
+
+  /* MOBILE */
+  @media screen and (max-width: 700px) {
+    .nav-container {
+      flex-direction: row;
+      gap: 8px;
+      align-items: center;
     }
 
-    .nav-container {
+    .nav-toggle {
+      display: block;
+    }
+
+    .nav-items {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: calc(100% + 8px);
+      margin: 0;
+      padding: 12px 16px;
+      background: var(--secondary);
+      flex-direction: column;
+      gap: 8px;
+      display: none; /* hidden by default */
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      z-index: 40;
+    }
+
+    .nav-items.show {
       display: flex;
-      padding: 24px 0;
-      justify-content: space-between;
-      align-items: center;
+    }
 
-      .nav-items {
-        list-style-type: none;
-        display: flex;
-        gap: 24px;
-
-        a {
-          text-decoration: none;
-          color: var(--dark);
-          font-size: 18px;
-        }
-      }
-      .nav-link {
-        font-weight: 500;
-        transition: color 0.3s ease;
-        padding: 8px 16px;
-        border-radius: 4px;
-        &:hover {
-          color: #476686;
-          background-color: rgba(0, 0, 0, 0.05);
-        }
-      }
-
-
-      @media screen and (max-width: 500px) {
-        & {
-          flex-direction: column;
-          gap: 16px;
-        }
-        
-      }
+    /* transform hamburger to X when open */
+    .nav-toggle.open .bar:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+    .nav-toggle.open .bar:nth-child(2) {
+      opacity: 0;
+    }
+    .nav-toggle.open .bar:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
     }
   }
 </style>
+
+<script>
+  /* simple toggle: no frameworks required */
+  (function () {
+    const toggle = document.getElementById('navToggle');
+    const items = document.getElementById('navItems');
+
+    if (!toggle || !items) return;
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.classList.toggle('open');
+      items.classList.toggle('show');
+    });
+
+    // close when clicking a link (mobile)
+    items.addEventListener('click', (e) => {
+      const target = e.target;
+      if (target instanceof Element && target.tagName === 'A') {
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.classList.remove('open');
+        items.classList.remove('show');
+      }
+    });
+
+    // close on outside click
+    document.addEventListener('click', (e) => {
+      const target = e.target;
+      if (!(target instanceof Node)) return;
+      if (!toggle.contains(target) && !items.contains(target)) {
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.classList.remove('open');
+        items.classList.remove('show');
+      }
+    });
+  })();
+</script>

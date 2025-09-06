@@ -1,0 +1,30 @@
+[
+  {
+    "role": "Frontend Developer",
+    "company": "Iono Tech",
+    "location": "Cairo, Egypt",
+    "start": "Nov 2024",
+    "end": "Present",
+    "description": "Building responsive web applications and components using modern React.",
+    "bullets": [
+      "Developed and maintained code for in-house and client websites primarily using HTML, CSS, Sass, JavaScript, and React",
+      "Collaborated with designers to create clean interfaces and simple, intuitive interactions and experiences",
+      "Optimized components for maximum performance across a vast array of web-capable devices and browsers"
+    ],
+    "link": "https://www.iono-tech.com"
+  },
+  {
+    "role": "Frontend and Cross Platform Mobile Intern",
+    "company": "International Theatre Institute(ITI)",
+    "location": "Ismailia, Egypt",
+    "start": "May 2024",
+    "end": "sep 2024",
+    "description": "Internship at ITI to learn and work on Frontend and Mobile Development.",
+    "bullets": [
+      "Learned the basics of Frontend Development using HTML, CSS, JavaScript, and React, and Next.js.",
+      "Learned the basics of Cross Platform Mobile Development using Flutter and React Native.",
+      "Worked on a project to build a responsive website for ITI using React and Tailwind CSS."
+    ],
+    "link": "https://iti.gov.eg"
+  }
+]

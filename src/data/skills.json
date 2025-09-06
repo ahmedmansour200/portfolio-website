@@ -1,5 +1,5 @@
 {
-    "Front-end": [
+    "Front-End": [
         "HTML5",
         "CSS3",
         "JavaScript",
@@ -15,6 +15,6 @@
         "Vite",
         "Bootstrap"
     ],
-    "Back-end": ["Node.js", "Express.js", "MongoDB", "SQL", "REST API", "GraphQL", "Firebase", "Authentication"],
+    "Back-End": ["Node.js", "Express.js", "MongoDB", "SQL", "REST API", "GraphQL", "Firebase", "Authentication"],
     "Design": ["UI/UX", "Figma", "Adobe XD", "Responsive Design"]
 }
